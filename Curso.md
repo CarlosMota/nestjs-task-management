@@ -217,3 +217,19 @@ async function bootstrap() {
 }
 bootstrap();
 ```
+
+## Seção 4: Data Persistence - PostgreSQL and TypeORM
+
+### Running PostgreSQL via Docker
+
+Para criar um container com a imagem do PostgresSQL
+
+```bash
+docker run --name postgres-nest -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres
+```
+
+Para parar um container, usa-se:
+
+```bash
+docker container stop postgres-nest
+```
