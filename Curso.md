@@ -79,4 +79,21 @@ Ao execurtamos o comando `yarn start:dev`, você verificará que as dependência
 
 ![Arquivo app.module.ts atualizado](/images/images_from_course/task_module_importated.png)
 
+### Introduction to NestJS Controllers
 
+* Responsável por ouvir as chegadas dos *requests* e retorna uma resposta para o cliente.
+* Vincula para um caminho específico (como exemplo, `/task`)
+* Contain ***handlers***, cada ***handle endpoints*** e os métodos de *resquest* (Get,Post, Delete...)
+* Tem a vantagem da ***dependency injection*** ou **injeção de dependência** para consumir o *providers* no mesmo *module*
+
+#### Defining a Controller
+
+* Controles são definidos em uma class com `@Controller` *decorator*.
+* O *decorator* aceita uma string, que é o caminho a ser tratado pelo controlador.
+
+```typescript
+@Controller('/tasks')
+export class TasksController{
+    
+}
+```
