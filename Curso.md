@@ -140,8 +140,17 @@ export class TasksModule {}
 
 ### Creating a Tasks Service
 
-Para criar um serviço é usado o comando 
+Para criar um serviço é usado o comando
 
 ```bash
 nest g service tasks
 ```
+
+### Intro to Data Transfer Objects (DTO)
+
+* DTO é um objeto que transporta dados entre processos
+* É usado para encapsular dados e enviá-los de um subsistema de um aplicativo para outro
+* É um objeto que define como os dados serão enviados pela rede
+* DTO não tem nenhum comportamento exceto para armazenamento, recuperação, serialização.
+* Pode ser usado para validação do dados.
+* Classes são o caminho para pecorrer DTO
