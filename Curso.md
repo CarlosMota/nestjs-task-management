@@ -233,3 +233,17 @@ Para parar um container, usa-se:
 ```bash
 docker container stop postgres-nest
 ```
+
+### Introduction to TypeORM
+
+Object Relational Mapping (ORM)
+
+É uma técnica que é usada para fazer *query* e manipular dados do banco de dados, usando orientação a objetos.
+
+### Setting up a Database Connection
+
+Para adicionar o pacote TypeORM com o postgres deve-se usar o seguinte comando:
+
+```bash
+yarn add typeorm @nestjs/typeorm pg
+```
