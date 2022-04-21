@@ -94,6 +94,47 @@ Ao execurtamos o comando `yarn start:dev`, você verificará que as dependência
 ```typescript
 @Controller('/tasks')
 export class TasksController{
-    
+    ...
 }
 ```
+
+### Creating at Tasks Controller
+
+Para criar um controller usando *CLI* usa-se o comando:
+
+```bash
+nest g controller <controller-name>
+```
+
+### Instroduction to NestJS Providers and Services
+
+* POde ser injetado dentro do construtor se decorado como um `@Injectable`, via injeção de dependência.
+* Pode ser um valor plano (???), uma classe, sync/async factory etc.
+* *Providers* devem ser fornecidos a um módulo para ele ser usado.
+* Podem ser exportados para um módulo e depois disponibilizados para outros módulos que importam esse módulo.
+
+#### Whats is a service?
+
+* Os serviços são implementados usandos provedores, mas nem todos os provedores são serviços.
+* Os serviços podem ser implemtados como sigletons
+* A maior parte da regra de negócio é implementada na camada de serviço.
+
+#### Providers in Modules
+
+```typescript
+import { TasksController } from './tasks.controller';
+import { TasksService } from './tasks.service';
+import { LoggerService } from '../shared/logger.service';
+
+@Module({
+    controllers: [
+      TasksController
+    ],
+    providers: [
+        TasksService,
+        LoggerService
+    ]
+})
+export class TasksModule {}
+```
+
