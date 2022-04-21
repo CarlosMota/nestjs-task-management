@@ -154,3 +154,66 @@ nest g service tasks
 * DTO não tem nenhum comportamento exceto para armazenamento, recuperação, serialização.
 * Pode ser usado para validação do dados.
 * Classes são o caminho para pecorrer DTO
+
+## Seção 3: Validation and Error Handling
+
+### Introduction to NestJS Pipes
+
+* Pipes operar com os argumentos a serem processados pela rota antes do método request ser chamado.
+* Pipes pode realizar transformações ou validações de dados.
+* Pipes pode lançar exceções.
+
+#### Custom pipe Implementation
+
+* Pipes são classes anotada com `@Injectable` *decorator*.
+* Pipes devem implementar a interface ***PipeTransform***,  pois toda pipe deve ter o método ***transform()***. Este método será chamado pelo NestJS para processar os argumentos.
+* O método ***transform()*** aceita dois parâmetros:
+  * ***value***: O valor do argumento processado
+  * ***metada*** (opcional): Um objeto contendo metadata sobre o argumento.
+* Exceções serão retornadas para o cliente.
+
+***Handler-level pipes*** are defined at the handler level, via the `@UsePipes()` decorator. Such pipe will process all parameters for the incoming requests.
+
+***Parameter-level pipes*** are defined at the parameter level. Only specific parameter for which the pipe has been specified will be processed
+
+```typescript
+@Post()
+@UsePipes(SomePipe)
+createTask(
+    @Body('description') description
+) {
+    ...
+}
+```
+
+***Global pipes*** are defined at the application level and will be applied to any incoming request.
+
+```typescript
+async function bootstrap() {
+    const app = await NestFactory.create(ApplicationModule);
+    app.useGlobalPipes(SomePipe);
+    await app.listen(3000);
+}
+bootstrap();
+```
+
+Para implementar os validadores é preciso instalar dois pacotes.
+
+```bash
+yarn add class-validator class-transformer
+```
+
+Documentação dos pacotes
+
+[Class Validator](https://github.com/typestack/class-validator)
+
+Para fazer a validação em todo projeto deve-se adicionar o ***ValidationPipe()*** no arquivo ***main.ts***
+
+```typescript
+async function bootstrap() {
+    const app = await NestFactory.create(ApplicationModule);
+    app.useGlobalPipes(new ValidationPipe());
+    await app.listen(3000);
+}
+bootstrap();
+```
