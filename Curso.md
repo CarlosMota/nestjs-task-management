@@ -138,3 +138,10 @@ import { LoggerService } from '../shared/logger.service';
 export class TasksModule {}
 ```
 
+### Creating a Tasks Service
+
+Para criar um serviço é usado o comando 
+
+```bash
+nest g service tasks
+```
