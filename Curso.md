@@ -247,3 +247,9 @@ Para adicionar o pacote TypeORM com o postgres deve-se usar o seguinte comando:
 ```bash
 yarn add typeorm @nestjs/typeorm pg
 ```
+
+### Persistence: Getting e Task by ID
+
+O curso está com a lib do typeORM defasada, esse link aí deu uma luz
+
+[Site explicando o TypeORM](https://www.sidechannel.blog/criando-uma-api-com-nestjs/)

@@ -36,3 +36,6 @@ lerna-debug.log*
 
 # Images para ignorar
 /images/ignore-images
+
+# Ignore variáveis de ambiente
+.env
